@@ -41,8 +41,11 @@ class EntryController {
         CoreDataStack.saveContext()
     }
     
-    func deleteMedication() {
-        //JCH-
+    func deleteEntry(entry: Entry) {
+        guard let index = entries.firstIndex(of: entry) else {return}
+        entries.remove(at: index)
+        CoreDataStack.context.delete(entry)
+        CoreDataStack.saveContext()
     }
     
 }//End of class
